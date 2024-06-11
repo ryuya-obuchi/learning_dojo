@@ -91,52 +91,42 @@ li {
 </main>
 <script>
   // ここに処理を記載する
-  `use strict`;
-const fileManage = {
-  f001:{
-    folderName: "情報システム部",
-    viewAuth: "Everyone",
-    editAuth: "情報システム部",
-    deleteAuth: "情報システム部"},
-  f002: {folderName:"経営管理部", 
-    viewAuth:"経営管理部", 
-    editAuth:"経営管理部", 
-    deleteAuth:"経営管理部"},
-  f003:{folderName:"営業部", 
-  viewAuth:"Everyone", 
-  editAuth:"営業部", 
-  deleteAuth:"営業部"} 
-};
-console.log(fileManage);
+    `use strict`;
+  const fileManage = {
+    f001:{
+      folderName: "情報システム部",
+      viewAuth: "Everyone",
+      editAuth: "情報システム部",
+      deleteAuth: "情報システム部"},
+    f002: {folderName:"経営管理部",
+      viewAuth:"経営管理部",
+      editAuth:"経営管理部",
+      deleteAuth:"経営管理部"},
+    f003:{folderName:"営業部",
+      viewAuth:"Everyone",
+      editAuth:"営業部",
+      deleteAuth:"営業部"}
+  };
+  console.log(fileManage);
 
-// 課題2
-Object.keys(fileManage).forEach((f000) => {
-  Object.keys(fileManage[f000]).forEach((listName) => {
-    console.log(fileManage[f000][listName]);
-    const tdTag = document.getElementById(`${f000}-${listName}`);
-    tdTag.textContent = fileManage[f000][listName];
+  // 課題2
+  Object.keys(fileManage).forEach((val) => {
+    Object.keys(fileManage[val]).forEach((listName) => {
+      const tdTag = document.getElementById(`${f000}-${listName}`);
+      tdTag.textContent = fileManage[val][listName];
+    });
   });
-});
 
-// 課題3
-const ultag = document.getElementById(`list`);
-const everyoneDataArray = Object.keys(fileManage).filter((val)=>{
-  return fileManage[val].viewAuth === 'Everyone';
-});
-everyoneDataArray.forEach(everyoneData =>{
-  const liTag = document.createElement(`li`);
-  ultag.appendChild(liTag);
-  liTag.textContent = (fileManage[everyoneData].folderName);
-});
-
-  // console.log(fileManage[everyoneData].folderName);
-// const everyoneData = [everyoneDataArray]viewAuth;
-// liTag = document.textContent(everyoneData);
-// console.log(fileManage);
-// const test = document.getElementById('f001-folderName');
-// test.textContent = fileManage.f001.folderName;
-// console.log(fileManage.f001.folderName);
-
+  // 課題3
+  const ultag = document.getElementById(`list`);
+  const everyoneDataArray = Object.keys(fileManage).filter((val)=>{
+    return fileManage[val].viewAuth === 'Everyone';
+  });
+  everyoneDataArray.forEach(everyoneData =>{
+    const liTag = document.createElement(`li`);
+    ultag.appendChild(liTag);
+    liTag.textContent = (fileManage[everyoneData].folderName);
+  });
 </script>
 </body>
 </html>
