@@ -71,19 +71,16 @@ header h2 {
   'use strict';
   const values = document.getElementsByClassName('chk');
   const sel =  document.getElementsByClassName('slct');
-  // console.log([1].value);
   const action = () => {
     let priceNum = 3900
     let secureTrue = values[0].checked;
     let diskTrue = values[1].checked;
-    // console.log(typeof(Number(sel[0].value)));
     if (secureTrue && diskTrue) { //チェックボックスによる条件分岐
       priceNum += Number(values[0].value) * Number(sel[0].value) + Number(values[1].value) * Number(sel[1].value);
     } else if (secureTrue && !diskTrue) {
       priceNum += Number(values[0].value) * Number(sel[0].value);
     } else if (!secureTrue && diskTrue) {
       priceNum += Number(values[1].value) * Number(sel[1].value);
-      
     }
     price.textContent = priceNum;
     console.log(typeof(priceNum));
@@ -91,21 +88,6 @@ header h2 {
   document.getElementById(`btn`).onclick = () => {
     action();
   };
-  // //チェックボックスでのイベント発生時の処理
-  // values[0].onchange = () => {
-  //   action();
-  // };
-  // values[1].onchange = () => {
-  //   action();
-  // };
-  // //プルダウン選択によるイベント発生時の処理
-  // sel[0].onchange = ()=> {
-  //   action();
-  // };
-  // sel[1].onchange = ()=> {
-  //   action();
-  // };
-
 </script>
 </body>
 </html>
