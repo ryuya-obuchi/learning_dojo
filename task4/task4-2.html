@@ -73,19 +73,17 @@ header h2 {
   const sel =  document.getElementsByClassName('slct');
   const action = () => {
     let priceNum = 3900
-    let secureTrue = values[0].checked;
-    let diskTrue = values[1].checked;
-    if (secureTrue && diskTrue) { //チェックボックスによる条件分岐
-      priceNum += Number(values[0].value) * Number(sel[0].value) + Number(values[1].value) * Number(sel[1].value);
-    } else if (secureTrue && !diskTrue) {
-      priceNum += Number(values[0].value) * Number(sel[0].value);
-    } else if (!secureTrue && diskTrue) {
-      priceNum += Number(values[1].value) * Number(sel[1].value);
-    }
+    const secureTrue = values[0].checked;
+    const diskTrue = values[1].checked;
+    if (secureTrue){
+      priceNum += (values[0].value) * Number(sel[0].value);
+    };
+    if (diskTrue){
+      priceNum += (values[1].value) * Number(sel[1].value);
+    };
     price.textContent = priceNum;
-    console.log(typeof(priceNum));
   };
-  document.getElementById(`btn`).onclick = () => {
+  document.getElementById('btn').onclick = () => {
     action();
   };
 </script>

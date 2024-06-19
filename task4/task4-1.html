@@ -56,8 +56,8 @@ header h2 {
   const values = document.getElementsByClassName('chk');
   const action = () => {
     let priceNum = 3900
-    let secureTrue = values[0].checked;
-    let diskTrue = values[1].checked;
+    const secureTrue = values[0].checked;
+    const diskTrue = values[1].checked;
     if (secureTrue && diskTrue) {
       priceNum += Number(values[0].value) + Number(values[1].value);
     } else if (secureTrue && !diskTrue) {
@@ -67,10 +67,10 @@ header h2 {
     }
     price.textContent = priceNum;
   };
-  values[0].onchange = () => {
+  values[0].onclick = () => {
     action();
   };
-  values[1].onchange = () => {
+  values[1].onclick = () => {
     action();
   };
 </script>
