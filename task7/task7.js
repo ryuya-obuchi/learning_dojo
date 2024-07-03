@@ -10,9 +10,7 @@
     "サイボウズ Office": 'OF',
     Mailwise: 'MW'
   };
-  var events = [
-    'app.record.create.show',
-    'app.record.edit.show',
+  const events = [
     'app.record.edit.change.date',
     'app.record.edit.change.products',
     'app.record.edit.change.number',
@@ -20,10 +18,19 @@
     'app.record.create.change.products',
     'app.record.create.change.number'
   ];
+
+  const shows = [
+    'app.record.create.show',
+    'app.record.edit.show',
+  ];
+
   kintone.events.on(events, (event) => {
     const newDate = dateFns.format(event.record.date.value, 'yyyyMMdd');
     event.record.output.value = `${newDate}-${proName[event.record.products.value]}-${event.record.number.value}`;
-    event.record['output'].disabled = true;
     return event;
+  });
+
+  kintone.events.on(shows, (event) => {
+    event.record['output'].disabled = true;
   });
 })();
