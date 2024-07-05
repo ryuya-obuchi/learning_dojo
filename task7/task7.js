@@ -32,5 +32,6 @@
 
   kintone.events.on(shows, (event) => {
     event.record['output'].disabled = true;
+    return event;
   });
 })();
