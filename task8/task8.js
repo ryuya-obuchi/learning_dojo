@@ -4,18 +4,21 @@
     const params = {
       app:16
     };
+    console.log(event);
     const resp = await kintone.api(kintone.api.url('/k/v1/app/form/fields.json'), 'GET', params)
-    const action5s = Object.keys(resp.properties.Table.fields.Action5.options);
+    const Array = Object.values(resp.properties.Table.fields.Action5.options);
+    console.log(Array);
+    const action5s = Object.values(Array.sort((a,b) => a.index - b.index));
+    console.log(action5s);
     // 行を追加してる
     const rowList = [];
     action5s.forEach((elem) => {
-        const newRow =
-          {
+        const newRow ={
             id: null,
             value: {
               Action5:{
                 type: "DROP_DOWN",
-                value: elem,
+                value: elem.label,
                 },
               '状況':{
                 type:'CHECK_BOX',
