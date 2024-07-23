@@ -4,7 +4,6 @@
     const params = {
       app:16
     };
-    console.log(event);
     const resp = await kintone.api(kintone.api.url('/k/v1/app/form/fields.json'), 'GET', params)
     const Array = Object.values(resp.properties.Table.fields.Action5.options);
     console.log(Array);
