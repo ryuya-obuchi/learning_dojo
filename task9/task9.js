@@ -5,7 +5,7 @@
     //加工：API実行
     //出力：重複したらアラート、OKなら保存して、キャンセルなら保存前に戻る
 
-  var events = [
+  const events = [
     'app.record.create.submit',
     'app.record.edit.submit',
   ];
@@ -14,19 +14,26 @@
     const query = `output = "${newData}"`;
     const resp = await kintone.api(kintone.api.url('/k/v1/records.json'), 'GET', {
       app: 20,
-      // fields: ["output"],
       query: query
     });
     const records = resp.records;
-    console.log(records.length);
-    if (records.length > 0){
-      const submitConfirmed = window.confirm('重複するレコードが存在します。保存しますか？')
-        if (submitConfirmed){
-          console.log('OK');
-          return event;
-        } else{
-          return false;
-        };
-    };
+    const askSubmit = () =>{
+      if (window.confirm('重複するレコードが存在します。保存しますか？')){
+        console.log('OK');
+        return event;
+      } else{
+        return false;
+      }
+    }
+
+    if (records.length >= 2){
+      askSubmit();
+    }
+    else if(records.length == 1 && event.record.$id.value != resp.records[0].$id.value){
+      askSubmit();
+    }
+    else{
+      return event;
+    }
   });
 })();
