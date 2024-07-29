@@ -20,7 +20,7 @@
       query: query
     });
     const records = resp.records;
-    if (records.length > 1){
+    if (records.length >= 1){
       if (window.confirm('重複するレコードが存在します。保存しますか？')){
         console.log('OK');
         return event;
